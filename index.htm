@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вікіпедія Філа — Енциклопедія про шпіца Фелікса</title>
+    <meta name="description" content="Це енциклопедія про неймовірно пухнастого та милого шпіца Філа!">
+    <meta name="keywords" content="Філ, Фелікс, Вікіпедія, енциклопедія, собака, шпіц.">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* Основні налаштування */
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+            background-color: #f6f6f6;
+            color: #202124;
+            scroll-behavior: smooth;
+        }
+
+        /* Анімація появи */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .main-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 40px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.05);
+            min-height: 100vh;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        /* Стилі заголовка */
+        .wiki-header {
+            border-bottom: 1px solid #a2a9b1;
+            margin-bottom: 20px;
+            padding-bottom: 5px;
+        }
+
+        .wiki-header h1 {
+            font-family: 'Linux Libertine', 'Georgia', 'Times', serif;
+            font-weight: 400;
+            font-size: 2.5em;
+            margin: 0;
+            color: #000;
+        }
+
+        .wiki-nav {
+            font-size: 13px;
+            color: #54595d;
+            margin-bottom: 15px;
+        }
+
+        /* Контент */
+        .wiki-content {
+            display: flex;
+            gap: 30px;
+            line-height: 1.7;
+        }
+
+        .wiki-text {
+            flex: 1;
+            font-size: 16px;
+        }
+        
+        /* Зміст */
+        .toc {
+            background-color: #f8f9fa;
+            border: 1px solid #a2a9b1;
+            padding: 15px 20px;
+            display: inline-block;
+            margin-bottom: 20px;
+            min-width: 250px;
+            border-radius: 2px;
+        }
+        .toc-title {
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+        .toc ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin: 0;
+        }
+        .toc li {
+            margin-bottom: 6px;
+        }
+        .toc a {
+            text-decoration: none;
+            color: #0645ad;
+        }
+        .toc a:hover {
+            text-decoration: underline;
+        }
+
+        /* Інфобокс */
+        .infobox {
+            width: 300px;
+            background-color: #f8f9fa;
+            border: 1px solid #a2a9b1;
+            padding: 15px;
+            font-size: 0.85em;
+            float: right;
+            border-radius: 2px;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.02);
+        }
+
+        .infobox-title {
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.4em;
+            margin-bottom: 15px;
+            background-color: #eaecf0;
+            padding: 10px;
+            border-radius: 4px;
+        }
+
+        .infobox img {
+            width: 100%;
+            height: auto;
+            border-radius: 2px;
+            margin-bottom: 10px;
+            border: 1px solid #c8ccd1;
+        }
+
+        .infobox table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .infobox th {
+            text-align: left;
+            padding: 8px;
+            border-bottom: 1px solid #fff;
+            background-color: #eff1f3;
+            width: 45%;
+        }
+
+        .infobox td {
+            padding: 8px;
+            border-bottom: 1px solid #eaecf0;
+        }
+
+        /* Список звичок */
+        .habits-list {
+            background: #fdfdfd;
+            border-left: 5px solid #ffb74d;
+            padding: 15px 20px 15px 40px;
+            margin: 20px 0;
+            list-style-type: disc;
+        }
+
+        .habits-list li {
+            margin-bottom: 8px;
+        }
+
+        .status-badge {
+            display: inline-block;
+            background: #ff9800;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.9em;
+            font-weight: bold;
+        }
+        
+        /* Аудіоплеєр */
+        .audio-section {
+            border: 1px solid #c8ccd1;
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .audio-section audio {
+            height: 40px;
+        }
+
+        .color-circle {
+            display: inline-block;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: #f9f5e9;
+            vertical-align: middle;
+            margin-left: 5px;
+            border: 1px solid #a2a9b1;
+        }
+
+        h2 {
+            border-bottom: 1px solid #a2a9b1;
+            padding-bottom: 5px;
+            margin-top: 35px;
+            font-family: 'Linux Libertine', 'Georgia', serif;
+        }
+
+        /* --- Стилі гри (Покращені) --- */
+        #game-area {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(180deg, #fff9c4 0%, #ffffff 100%);
+            border: 2px solid #ffb74d;
+            border-radius: 12px;
+            overflow: hidden;
+            margin: 20px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: inset 0 0 15px rgba(255, 183, 77, 0.2);
+        }
+
+        #game-canvas {
+            display: none;
+            width: 100%;
+            height: 100%;
+        }
+
+        #game-ui {
+            position: absolute;
+            top: 15px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            pointer-events: none;
+            display: none;
+        }
+
+        #score-board {
+            font-size: 28px;
+            font-weight: 800;
+            color: #e65100;
+            text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.8);
+            font-family: 'Roboto', sans-serif;
+        }
+
+        #start-btn {
+            padding: 18px 40px;
+            font-size: 22px;
+            font-weight: bold;
+            background: linear-gradient(45deg, #ff9800, #ffb74d);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 6px 15px rgba(255, 152, 0, 0.3);
+            transition: transform 0.2s, box-shadow 0.2s;
+            z-index: 10;
+        }
+
+        #start-btn:hover { 
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(255, 152, 0, 0.4);
+        }
+
+        @media (max-width: 850px) {
+            .wiki-content { flex-direction: column-reverse; }
+            .infobox { width: 100%; float: none; margin: 0 0 20px 0; }
+            .main-container { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="main-container">
+        <div class="wiki-nav">
+            <span>Матеріал з Вікіпедії — вільної енциклопедії.</span>
+        </div>
+        
+        <div class="wiki-header">
+            <h1>Філ (песик)</h1>
+        </div>
+
+        <div class="wiki-content">
+            <div class="wiki-text">
+                <p><strong>Філ</strong> (повне ім'я — <strong>Фелікс</strong>) — яскравий представник роду псових, що належить до породи <strong>Шпіц</strong>. Відомий своєю неймовірною пухнастістю, що нагадує маленьку хмаринку, та надзвичайно доброзичливим характером. Філ — це втілення позитиву, енергії та щирої любові до життя (і до корму).</p>
+                
+                <div class="toc">
+                    <div class="toc-title">Зміст</div>
+                    <ul>
+                        <li><a href="#appearance">1 Особливості зовнішності</a></li>
+                        <li><a href="#character">2 Характер та вдача</a></li>
+                        <li><a href="#diet">3 Харчові вподобання</a></li>
+                        <li><a href="#lifestyle">4 Стиль життя</a></li>
+                        <li><a href="#game-section">5 Гра: Філ ловить корм</a></li>
+                        <li><a href="#facts">6 Цікаві факти</a></li>
+                    </ul>
+                </div>
+
+                <h2 id="appearance">Особливості зовнішності</h2>
+                <p>Фелікс є класичним шпіцом з густою, м'якою шерстю, яка робить його візуально вдвічі більшим, ніж він є насправді. Його маленькі вушка та "усміхнена" мордочка підкорюють серця з першого погляду. На відміну від сфінксів, Філ потребує постійного вичісування, щоб залишатися таким же чарівним.</p>
+
+                <h2 id="character">Характер та вдача</h2>
+                <p>Філ характеризується як <strong>дуже прикольний та милий песик</strong>. Він обожнює увагу, завжди готовий до гри та прогулянок. Попри свій невеликий розмір, він має велике серце і вважає себе головним захисником та джерелом радості в домі.</p>
+                
+                <div class="audio-section">
+                    <div>
+                        <strong>Голос Філа:</strong><br>
+                        <span style="font-size: 0.9em; color: #54595d;">Радісний гавкіт та сопіння шпіца.</span>
+                    </div>
+                    <audio controls preload="none">
+                        <source src="Sound.mp3" type="audio/mpeg">
+                        Ваш браузер не підтримує аудіоелемент HTML5.
+                    </audio>
+                </div>
+
+                <h2 id="diet">Харчові вподобання</h2>
+                <p>Найбільшою слабкістю Філа є <strong>корм</strong>. Він готовий на будь-які трюки (навіть якщо він їх не знає), аби отримати заповітну гранулу. Кожен прийом їжі для нього — це свято, яке супроводжується активним вилянням хвостом.</p>
+                <ul class="habits-list">
+                    <li><strong>Корм</strong> — сенс життя та найкраща нагорода.</li>
+                    <li><strong>Активність</strong> — постійний рух та бажання досліджувати світ.</li>
+                </ul>
+
+                <h2 id="lifestyle">Стиль життя</h2>
+                <p>Філ веде насичений спосіб життя: від ранкових побігеньок до вечірнього відпочинку на м'якій подушці. Він — справжня зірка соцмереж та улюбленець усіх сусідів завдяки своїй харизмі.</p>
+
+                <h2 id="game-section">Гра: Філ ловить корм</h2>
+                <div id="game-area">
+                    <button id="start-btn">Нагодувати Філа</button>
+                    <div id="game-ui">
+                        <div id="score-board">З'їдено корму: 0</div>
+                    </div>
+                    <canvas id="game-canvas"></canvas>
+                    <audio id="game-music" loop>
+                        <source src="Song.mp3" type="audio/mpeg">
+                    </audio>
+                </div>
+                <script>
+                    const canvas = document.getElementById('game-canvas');
+                    const ctx = canvas.getContext('2d');
+                    const startBtn = document.getElementById('start-btn');
+                    const gameUi = document.getElementById('game-ui');
+                    const scoreBoard = document.getElementById('score-board');
+                    const music = document.getElementById('game-music');
+
+                    let score = 0;
+                    let gameActive = false;
+                    let items = [];
+                    let phil = { x: 0, y: 0, w: 90, h: 90 };
+                    let animationId;
+
+                    const philImg = new Image();
+                    philImg.src = 'Філ.png';
+
+                    function initGame() {
+                        canvas.style.display = 'block';
+                        gameUi.style.display = 'block';
+                        canvas.width = canvas.parentElement.clientWidth;
+                        canvas.height = canvas.parentElement.clientHeight;
+                        phil.x = canvas.width / 2 - phil.w / 2;
+                        phil.y = canvas.height - phil.h - 10;
+                        score = 0;
+                        items = [];
+                        gameActive = true;
+                        music.currentTime = 0;
+                        music.play();
+                        requestAnimationFrame(gameLoop);
+                    }
+
+                    function spawnItem() {
+                        if (Math.random() < 0.05) {
+                            items.push({
+                                x: Math.random() * (canvas.width - 25),
+                                y: -30,
+                                speed: 3 + (score / 15),
+                                color: '#795548'
+                            });
+                        }
+                    }
+
+                    function update() {
+                        spawnItem();
+                        items.forEach((item, index) => {
+                            item.y += item.speed;
+                            
+                            if (item.y + 25 > phil.y && item.x + 25 > phil.x && item.x < phil.x + phil.w) {
+                                items.splice(index, 1);
+                                score++;
+                                scoreBoard.innerText = "З'їдено корму: " + score;
+                            }
+
+                            if (item.y > canvas.height) {
+                                gameOver();
+                            }
+                        });
+                    }
+
+                    function draw() {
+                        ctx.clearRect(0, 0, canvas.width, canvas.height);
+                        
+                        // Малюємо Філа
+                        ctx.drawImage(philImg, phil.x, phil.y, phil.w, phil.h);
+
+                        // Малюємо гранули корму
+                        items.forEach(item => {
+                            ctx.beginPath();
+                            ctx.arc(item.x + 12, item.y + 12, 12, 0, Math.PI * 2);
+                            ctx.fillStyle = '#a1887f';
+                            ctx.fill();
+                            ctx.strokeStyle = '#5d4037';
+                            ctx.lineWidth = 2;
+                            ctx.stroke();
+                        });
+                    }
+
+                    function gameLoop() {
+                        if (!gameActive) return;
+                        update();
+                        draw();
+                        animationId = requestAnimationFrame(gameLoop);
+                    }
+
+                    function gameOver() {
+                        gameActive = false;
+                        cancelAnimationFrame(animationId);
+                        music.pause();
+                        alert('Гра завершена! Філ з’їв корму: ' + score + '\nЯкий щасливий та ситий песик!');
+                        canvas.style.display = 'none';
+                        gameUi.style.display = 'none';
+                        startBtn.style.display = 'block';
+                    }
+
+                    startBtn.addEventListener('click', () => {
+                        startBtn.style.display = 'none';
+                        initGame();
+                    });
+
+                    const handleMove = (e) => {
+                        if (!gameActive) return;
+                        let clientX = (e.touches && e.touches[0]) ? e.touches[0].clientX : e.clientX;
+                        let rect = canvas.getBoundingClientRect();
+                        let newX = clientX - rect.left - phil.w / 2;
+                        if (newX < 0) newX = 0;
+                        if (newX > canvas.width - phil.w) newX = canvas.width - phil.w;
+                        phil.x = newX;
+                    };
+
+                    canvas.parentElement.addEventListener('mousemove', handleMove);
+                    canvas.parentElement.addEventListener('touchmove', handleMove);
+                </script>
+
+                <h2 id="facts">Цікаві факти</h2>
+                <ul>
+                    <li>Філ може перетворитися на пухнасту кулю, якщо його правильно почесати.</li>
+                    <li>Він вміє робити "щенячі очі", проти яких не встоїть жоден власник корму.</li>
+                    <li>Попри свій милий вигляд, Філ вважає себе дуже грізним охоронцем.</li>
+                    <li>Найкращий спосіб змусити його бігти — просто зашурхотіти пакетиком.</li>
+                </ul>
+            </div>
+
+            <div class="infobox">
+                <div class="infobox-title">Філ (Фелікс)</div>
+                <img src="Філ.png" alt="Фото шпіца Філа">
+                <p style="text-align: center; font-size: 0.8em; color: #555; margin-top: 0;">Філ — майстер пухнастості та поїдання корму</p>
+                <table>
+                    <tr>
+                        <th>Порода</th>
+                        <td>Шпіц</td>
+                    </tr>
+                    <tr>
+                        <th>Вид</th>
+                        <td>Пес свійський</td>
+                    </tr>
+                    <tr>
+                        <th>Вміння</th>
+                        <td>Дарувати радість</td>
+                    </tr>
+                    <tr>
+                        <th>Характер</th>
+                        <td>Милий, прикольний</td>
+                    </tr>
+                    <tr>
+                        <th>Колір шерсті</th>
+                        <td>Кремовий <span class="color-circle" title="Колір шерсті Філа"></span></td>
+                    </tr>
+                    <tr>
+                        <th>Хобі</th>
+                        <td>Гавкати та їсти</td>
+                    </tr>
+                    <tr>
+                        <th>Статус</th>
+                        <td><span class="status-badge">Найкращий хлопчик</span></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
