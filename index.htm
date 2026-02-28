@@ -8,7 +8,6 @@
     <meta name="keywords" content="Філ, Фелікс, Вікіпедія, енциклопедія, собака, шпіц.">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
-        /* Основні налаштування */
         body, html {
             margin: 0;
             padding: 0;
@@ -18,7 +17,6 @@
             scroll-behavior: smooth;
         }
 
-        /* Анімація появи */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
@@ -31,10 +29,8 @@
             padding: 40px;
             box-shadow: 0 0 20px rgba(0,0,0,0.05);
             min-height: 100vh;
-            animation: fadeIn 0.8s ease-out;
         }
 
-        /* Стилі заголовка */
         .wiki-header {
             border-bottom: 1px solid #a2a9b1;
             margin-bottom: 20px;
@@ -55,7 +51,6 @@
             margin-bottom: 15px;
         }
 
-        /* Контент */
         .wiki-content {
             display: flex;
             gap: 30px;
@@ -66,8 +61,7 @@
             flex: 1;
             font-size: 16px;
         }
-        
-        /* Зміст */
+
         .toc {
             background-color: #f8f9fa;
             border: 1px solid #a2a9b1;
@@ -99,7 +93,6 @@
             text-decoration: underline;
         }
 
-        /* Інфобокс */
         .infobox {
             width: 300px;
             background-color: #f8f9fa;
@@ -147,7 +140,6 @@
             border-bottom: 1px solid #eaecf0;
         }
 
-        /* Список звичок */
         .habits-list {
             background: #fdfdfd;
             border-left: 5px solid #ffb74d;
@@ -169,8 +161,7 @@
             font-size: 0.9em;
             font-weight: bold;
         }
-        
-        /* Аудіоплеєр */
+
         .audio-section {
             border: 1px solid #c8ccd1;
             background-color: #f8f9fa;
@@ -181,7 +172,7 @@
             gap: 15px;
             margin: 20px 0;
         }
-        
+
         .audio-section audio {
             height: 40px;
         }
@@ -204,7 +195,7 @@
             font-family: 'Linux Libertine', 'Georgia', serif;
         }
 
-        /* --- Стилі гри (Покращені) --- */
+        /* Гра */
         #game-area {
             position: relative;
             width: 100%;
@@ -258,9 +249,390 @@
             z-index: 10;
         }
 
-        #start-btn:hover { 
+        #start-btn:hover {
             transform: scale(1.05);
             box-shadow: 0 8px 20px rgba(255, 152, 0, 0.4);
+        }
+
+        /* Сторінки */
+        .page {
+            display: none;
+            animation: fadeIn 0.5s ease-out;
+        }
+        .page.active {
+            display: block;
+        }
+
+        /* Навігація Wikipedia-стиль */
+        .wiki-pagination {
+            border-top: 1px solid #a2a9b1;
+            margin-top: 40px;
+            padding-top: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+        }
+
+        .wiki-pagination a {
+            color: #0645ad;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 2px 6px;
+        }
+
+        .wiki-pagination a:hover {
+            text-decoration: underline;
+        }
+
+        .wiki-page-indicator {
+            color: #54595d;
+            font-size: 13px;
+        }
+
+        /* Табличка порівняння */
+        .compare-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 0.9em;
+        }
+        .compare-table th {
+            background: #eaecf0;
+            border: 1px solid #a2a9b1;
+            padding: 8px 12px;
+            text-align: left;
+        }
+        .compare-table td {
+            border: 1px solid #a2a9b1;
+            padding: 8px 12px;
+        }
+        .compare-table tr:nth-child(even) td {
+            background: #f8f9fa;
+        }
+
+        /* Шкала настрою */
+        .mood-bar-wrap {
+            margin: 8px 0 16px 0;
+        }
+        .mood-label {
+            font-size: 0.9em;
+            margin-bottom: 3px;
+            color: #54595d;
+        }
+        .mood-bar {
+            height: 14px;
+            border-radius: 7px;
+            background: #e0e0e0;
+            overflow: hidden;
+        }
+        .mood-fill {
+            height: 100%;
+            border-radius: 7px;
+            transition: width 1s ease;
+        }
+
+        /* Вікторина */
+        .quiz-box {
+            border: 1px solid #a2a9b1;
+            background: #f8f9fa;
+            border-radius: 4px;
+            padding: 18px 22px;
+            margin: 20px 0;
+        }
+        .quiz-question {
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+        .quiz-options label {
+            display: block;
+            margin-bottom: 8px;
+            cursor: pointer;
+        }
+        .quiz-options input {
+            margin-right: 8px;
+        }
+        .quiz-result {
+            margin-top: 12px;
+            font-weight: bold;
+            min-height: 20px;
+        }
+        .quiz-btn {
+            margin-top: 10px;
+            padding: 6px 18px;
+            background: #0645ad;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .quiz-btn:hover { background: #0b3fad; }
+
+        /* Таймлайн */
+        .timeline {
+            border-left: 3px solid #ffb74d;
+            margin: 20px 0 20px 20px;
+            padding-left: 20px;
+        }
+        .timeline-item {
+            position: relative;
+            margin-bottom: 20px;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -28px;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #ff9800;
+            border: 2px solid #fff;
+            box-shadow: 0 0 0 2px #ffb74d;
+        }
+        .timeline-date {
+            font-size: 0.85em;
+            color: #54595d;
+            font-weight: bold;
+        }
+
+        /* Карта активності */
+        .activity-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 4px;
+            margin: 16px 0;
+        }
+        .activity-cell {
+            height: 18px;
+            border-radius: 3px;
+            background: #ebedf0;
+            cursor: default;
+            position: relative;
+        }
+        .activity-cell.low { background: #ffd59e; }
+        .activity-cell.mid { background: #ff9800; }
+        .activity-cell.high { background: #e65100; }
+        .activity-cell:hover::after {
+            content: attr(data-tip);
+            position: absolute;
+            bottom: 22px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #333;
+            color: #fff;
+            font-size: 11px;
+            padding: 3px 7px;
+            border-radius: 3px;
+            white-space: nowrap;
+            z-index: 99;
+        }
+
+        /* Рейтинг зірками */
+        .star-rating {
+            font-size: 22px;
+            color: #ffb74d;
+            letter-spacing: 3px;
+        }
+
+        /* Спливний факт */
+        .fact-card {
+            border: 1px solid #c8ccd1;
+            border-radius: 4px;
+            padding: 14px 18px;
+            margin: 12px 0;
+            background: #fff;
+            cursor: pointer;
+            transition: box-shadow 0.2s;
+            position: relative;
+        }
+        .fact-card:hover { box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .fact-card-front { font-weight: bold; color: #0645ad; }
+        .fact-card-back { display: none; margin-top: 8px; color: #202124; }
+        .fact-card.open .fact-card-back { display: block; }
+        .fact-card-toggle { float: right; color: #a2a9b1; font-size: 18px; }
+
+        /* Пам'ятка-повзунок */
+        .slider-wrap {
+            margin: 18px 0;
+        }
+        .slider-wrap input[type=range] {
+            width: 100%;
+            accent-color: #ff9800;
+        }
+        .slider-label {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85em;
+            color: #54595d;
+        }
+
+        /* Прогрес філа */
+        .phil-stat {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin: 10px 0;
+        }
+        .phil-stat-name {
+            width: 120px;
+            font-size: 0.9em;
+        }
+        .phil-stat-bar {
+            flex: 1;
+            height: 12px;
+            background: #e0e0e0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        .phil-stat-fill {
+            height: 100%;
+            border-radius: 6px;
+        }
+        .phil-stat-val {
+            width: 35px;
+            text-align: right;
+            font-size: 0.85em;
+            color: #54595d;
+        }
+
+        /* Пазл */
+        #puzzle-area {
+            border: 1px solid #a2a9b1;
+            background: #f8f9fa;
+            border-radius: 4px;
+            padding: 18px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        .puzzle-grid {
+            display: inline-grid;
+            grid-template-columns: repeat(3, 80px);
+            grid-template-rows: repeat(3, 80px);
+            gap: 4px;
+            margin: 16px auto;
+        }
+        .puzzle-tile {
+            width: 80px;
+            height: 80px;
+            background: #eaecf0;
+            border: 2px solid #a2a9b1;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2em;
+            cursor: pointer;
+            user-select: none;
+            transition: background 0.15s;
+        }
+        .puzzle-tile:hover { background: #fff9c4; }
+        .puzzle-tile.empty { background: #fff; border-style: dashed; cursor: default; }
+        #puzzle-msg { font-weight: bold; color: #0645ad; min-height: 22px; margin-top: 8px; }
+
+        /* Фото-галерея */
+        .gallery {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin: 16px 0;
+        }
+        .gallery-item {
+            width: 120px;
+            border: 1px solid #c8ccd1;
+            border-radius: 3px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: box-shadow 0.2s;
+        }
+        .gallery-item:hover { box-shadow: 0 2px 10px rgba(0,0,0,0.15); }
+        .gallery-item img {
+            width: 100%;
+            height: 90px;
+            object-fit: cover;
+            display: block;
+        }
+        .gallery-caption {
+            font-size: 0.78em;
+            text-align: center;
+            padding: 4px;
+            background: #f8f9fa;
+            color: #54595d;
+        }
+
+        /* Модалка */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+        .modal-overlay.open { display: flex; }
+        .modal-box {
+            background: #fff;
+            border-radius: 6px;
+            padding: 24px;
+            max-width: 480px;
+            width: 90%;
+            position: relative;
+        }
+        .modal-close {
+            position: absolute;
+            top: 10px; right: 14px;
+            font-size: 22px;
+            cursor: pointer;
+            color: #54595d;
+        }
+        .modal-close:hover { color: #000; }
+
+        /* Спадний список */
+        details.wiki-details {
+            border: 1px solid #a2a9b1;
+            border-radius: 2px;
+            margin: 10px 0;
+        }
+        details.wiki-details summary {
+            padding: 8px 14px;
+            cursor: pointer;
+            background: #f8f9fa;
+            font-weight: bold;
+            list-style: none;
+            user-select: none;
+        }
+        details.wiki-details summary::-webkit-details-marker { display: none; }
+        details.wiki-details summary::before {
+            content: '▶ ';
+            font-size: 0.75em;
+            color: #54595d;
+        }
+        details.wiki-details[open] summary::before {
+            content: '▼ ';
+        }
+        details.wiki-details .details-body {
+            padding: 12px 16px;
+        }
+
+        /* Цитата */
+        .wiki-quote {
+            border-left: 4px solid #a2a9b1;
+            margin: 16px 0;
+            padding: 10px 18px;
+            color: #54595d;
+            font-style: italic;
+        }
+
+        /* note */
+        .wiki-note {
+            background: #eaf3fb;
+            border: 1px solid #b8d3e8;
+            border-radius: 3px;
+            padding: 10px 14px;
+            font-size: 0.9em;
+            margin: 14px 0;
         }
 
         @media (max-width: 850px) {
@@ -272,19 +644,21 @@
 </head>
 <body>
 
-    <div class="main-container">
-        <div class="wiki-nav">
-            <span>Матеріал з Вікіпедії — вільної енциклопедії.</span>
-        </div>
-        
-        <div class="wiki-header">
-            <h1>Філ (песик)</h1>
-        </div>
+<div class="main-container">
+    <div class="wiki-nav">
+        <span>Матеріал з Вікіпедії — вільної енциклопедії.</span>
+    </div>
 
+    <div class="wiki-header">
+        <h1>Філ (песик)</h1>
+    </div>
+
+    <!-- =================== СТОРІНКА 1 =================== -->
+    <div class="page active" id="page-1">
         <div class="wiki-content">
             <div class="wiki-text">
                 <p><strong>Філ</strong> (повне ім'я — <strong>Фелікс</strong>) — яскравий представник роду псових, що належить до породи <strong>Шпіц</strong>. Відомий своєю неймовірною пухнастістю, що нагадує маленьку хмаринку, та надзвичайно доброзичливим характером. Філ — це втілення позитиву, енергії та щирої любові до життя (і до корму).</p>
-                
+
                 <div class="toc">
                     <div class="toc-title">Зміст</div>
                     <ul>
@@ -302,7 +676,7 @@
 
                 <h2 id="character">Характер та вдача</h2>
                 <p>Філ характеризується як <strong>дуже прикольний та милий песик</strong>. Він обожнює увагу, завжди готовий до гри та прогулянок. Попри свій невеликий розмір, він має велике серце і вважає себе головним захисником та джерелом радості в домі.</p>
-                
+
                 <div class="audio-section">
                     <div>
                         <strong>Голос Філа:</strong><br>
@@ -382,13 +756,11 @@
                         spawnItem();
                         items.forEach((item, index) => {
                             item.y += item.speed;
-                            
                             if (item.y + 25 > phil.y && item.x + 25 > phil.x && item.x < phil.x + phil.w) {
                                 items.splice(index, 1);
                                 score++;
                                 scoreBoard.innerText = "З'їдено корму: " + score;
                             }
-
                             if (item.y > canvas.height) {
                                 gameOver();
                             }
@@ -397,11 +769,7 @@
 
                     function draw() {
                         ctx.clearRect(0, 0, canvas.width, canvas.height);
-                        
-                        // Малюємо Філа
                         ctx.drawImage(philImg, phil.x, phil.y, phil.w, phil.h);
-
-                        // Малюємо гранули корму
                         items.forEach(item => {
                             ctx.beginPath();
                             ctx.arc(item.x + 12, item.y + 12, 12, 0, Math.PI * 2);
@@ -424,7 +792,7 @@
                         gameActive = false;
                         cancelAnimationFrame(animationId);
                         music.pause();
-                        alert('Гра завершена! Філ з’їв корму: ' + score + '\nЯкий щасливий та ситий песик!');
+                        alert('Гра завершена! Філ з\'їв корму: ' + score + '\nЯкий щасливий та ситий песик!');
                         canvas.style.display = 'none';
                         gameUi.style.display = 'none';
                         startBtn.style.display = 'block';
@@ -463,38 +831,750 @@
                 <img src="Філ.png" alt="Фото шпіца Філа">
                 <p style="text-align: center; font-size: 0.8em; color: #555; margin-top: 0;">Філ — майстер пухнастості та поїдання корму</p>
                 <table>
-                    <tr>
-                        <th>Порода</th>
-                        <td>Шпіц</td>
-                    </tr>
-                    <tr>
-                        <th>Вид</th>
-                        <td>Пес свійський</td>
-                    </tr>
-                    <tr>
-                        <th>Вміння</th>
-                        <td>Дарувати радість</td>
-                    </tr>
-                    <tr>
-                        <th>Характер</th>
-                        <td>Милий, прикольний</td>
-                    </tr>
-                    <tr>
-                        <th>Колір шерсті</th>
-                        <td>Кремовий <span class="color-circle" title="Колір шерсті Філа"></span></td>
-                    </tr>
-                    <tr>
-                        <th>Хобі</th>
-                        <td>Гавкати та їсти</td>
-                    </tr>
-                    <tr>
-                        <th>Статус</th>
-                        <td><span class="status-badge">Найкращий хлопчик</span></td>
-                    </tr>
+                    <tr><th>Порода</th><td>Шпіц</td></tr>
+                    <tr><th>Вид</th><td>Пес свійський</td></tr>
+                    <tr><th>Вміння</th><td>Дарувати радість</td></tr>
+                    <tr><th>Характер</th><td>Милий, прикольний</td></tr>
+                    <tr><th>Колір шерсті</th><td>Кремовий <span class="color-circle" title="Колір шерсті Філа"></span></td></tr>
+                    <tr><th>Хобі</th><td>Гавкати та їсти</td></tr>
+                    <tr><th>Статус</th><td><span class="status-badge">Найкращий хлопчик</span></td></tr>
                 </table>
             </div>
         </div>
     </div>
+
+    <!-- =================== СТОРІНКА 2 =================== -->
+    <div class="page" id="page-2">
+        <h2 style="margin-top:0">Характеристики Філа</h2>
+        <p>На цій сторінці зібрані детальні характеристики Філа у вигляді статистичних показників та порівняльних таблиць.</p>
+
+        <h2>Шкала характеристик</h2>
+        <p>Нижче наведено основні показники Філа за шкалою від 0 до 100, виміряні методом щоденних спостережень:</p>
+
+        <div class="phil-stat">
+            <div class="phil-stat-name">Пухнастість</div>
+            <div class="phil-stat-bar"><div class="phil-stat-fill" style="width:97%;background:#ff9800;"></div></div>
+            <div class="phil-stat-val">97</div>
+        </div>
+        <div class="phil-stat">
+            <div class="phil-stat-name">Апетит</div>
+            <div class="phil-stat-bar"><div class="phil-stat-fill" style="width:100%;background:#e65100;"></div></div>
+            <div class="phil-stat-val">100</div>
+        </div>
+        <div class="phil-stat">
+            <div class="phil-stat-name">Милота</div>
+            <div class="phil-stat-bar"><div class="phil-stat-fill" style="width:99%;background:#e91e63;"></div></div>
+            <div class="phil-stat-val">99</div>
+        </div>
+        <div class="phil-stat">
+            <div class="phil-stat-name">Швидкість</div>
+            <div class="phil-stat-bar"><div class="phil-stat-fill" style="width:72%;background:#4caf50;"></div></div>
+            <div class="phil-stat-val">72</div>
+        </div>
+        <div class="phil-stat">
+            <div class="phil-stat-name">Слухняність</div>
+            <div class="phil-stat-bar"><div class="phil-stat-fill" style="width:55%;background:#9c27b0;"></div></div>
+            <div class="phil-stat-val">55</div>
+        </div>
+        <div class="phil-stat">
+            <div class="phil-stat-name">Гавкіт</div>
+            <div class="phil-stat-bar"><div class="phil-stat-fill" style="width:88%;background:#2196f3;"></div></div>
+            <div class="phil-stat-val">88</div>
+        </div>
+
+        <h2>Порівняння з іншими породами</h2>
+        <table class="compare-table">
+            <tr>
+                <th>Показник</th>
+                <th>Шпіц (Філ)</th>
+                <th>Лабрадор</th>
+                <th>Чихуахуа</th>
+                <th>Хаскі</th>
+            </tr>
+            <tr>
+                <td>Пухнастість</td>
+                <td>⭐⭐⭐⭐⭐</td>
+                <td>⭐⭐⭐</td>
+                <td>⭐⭐</td>
+                <td>⭐⭐⭐⭐</td>
+            </tr>
+            <tr>
+                <td>Дружелюбність</td>
+                <td>⭐⭐⭐⭐⭐</td>
+                <td>⭐⭐⭐⭐⭐</td>
+                <td>⭐⭐⭐</td>
+                <td>⭐⭐⭐⭐</td>
+            </tr>
+            <tr>
+                <td>Гавкотливість</td>
+                <td>⭐⭐⭐⭐⭐</td>
+                <td>⭐⭐</td>
+                <td>⭐⭐⭐⭐⭐</td>
+                <td>⭐⭐⭐</td>
+            </tr>
+            <tr>
+                <td>Енергійність</td>
+                <td>⭐⭐⭐⭐</td>
+                <td>⭐⭐⭐⭐⭐</td>
+                <td>⭐⭐⭐</td>
+                <td>⭐⭐⭐⭐⭐</td>
+            </tr>
+            <tr>
+                <td>Любов до їжі</td>
+                <td>⭐⭐⭐⭐⭐</td>
+                <td>⭐⭐⭐⭐⭐</td>
+                <td>⭐⭐⭐</td>
+                <td>⭐⭐⭐</td>
+            </tr>
+        </table>
+
+        <h2>Рейтинги</h2>
+        <p>Загальна оцінка Філа від відвідувачів Вікіпедії Філа:</p>
+        <div class="star-rating">★★★★★</div>
+        <p style="font-size:0.9em; color:#54595d;">5.0 / 5.0 — на основі нескінченної кількості обіймів</p>
+
+        <div class="wiki-note">
+            <strong>Примітка:</strong> Усі показники виміряні на основі суб'єктивних спостережень і не претендують на наукову точність. Філ схвалив цей розділ.
+        </div>
+    </div>
+
+    <!-- =================== СТОРІНКА 3 =================== -->
+    <div class="page" id="page-3">
+        <h2 style="margin-top:0">Хронологія життя Філа</h2>
+        <p>Важливі події в житті найпухнастішого шпіца, задокументовані дослідниками та власниками.</p>
+
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-date">День 1</div>
+                <p>Філ з'являється на світ. Вже тоді всі відзначають неймовірну пухнастість та розмір вух.</p>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">Перший тиждень</div>
+                <p>Філ відкриває для себе корм. З цього моменту корм стає сенсом його існування.</p>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">Перший місяць</div>
+                <p>Освоює техніку "щенячих очей". Ефективність — 100%. Жоден власник не зміг встояти.</p>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">Перша прогулянка</div>
+                <p>Виходить на вулицю і одразу вирішує, що <em>він</em> тут головний. Гавкає на всіх.</p>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">Перше купання</div>
+                <p>Подія, яку Філ не забуде ніколи. Виражає протест гавкотом, але виглядає ще пухнастіше після.</p>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">Перший рік</div>
+                <p>Офіційно проголошений найкращим хлопчиком у районі. Отримує щорічну нагороду "Найбільше серце у найменшому тілі".</p>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">Сьогодні</div>
+                <p>Продовжує дарувати радість, поїдати корм та підкорювати серця. Не планує зупинятися.</p>
+            </div>
+        </div>
+
+        <h2>Особливі досягнення</h2>
+        <details class="wiki-details">
+            <summary>Рекорд зі швидкості з'їдання корму</summary>
+            <div class="details-body">
+                Філ встановив особистий рекорд — одна миска корму за 8 секунд. Офіційне підтвердження очікується.</div>
+        </details>
+        <details class="wiki-details">
+            <summary>Майстерність маскування</summary>
+            <div class="details-body">
+                Завдяки своїй пухнастості Філ може злитися з будь-яким м'яким диваном. Власники знаходили його лише через гавкіт.</div>
+        </details>
+        <details class="wiki-details">
+            <summary>Рекорд з безперервного щенячого погляду</summary>
+            <div class="details-body">
+                Зафіксовано безперервний щенячий погляд тривалістю 12 хвилин, направлений на пакетик з ласощами. Жертва не витримала.</div>
+        </details>
+        <details class="wiki-details">
+            <summary>Найгучніший гавкіт</summary>
+            <div class="details-body">
+                Філ гавкав на свого відображення у дзеркалі протягом 20 хвилин. Переможець суперечки — невідомий.</div>
+        </details>
+    </div>
+
+    <!-- =================== СТОРІНКА 4 =================== -->
+    <div class="page" id="page-4">
+        <h2 style="margin-top:0">Вікторина про Філа</h2>
+        <p>Перевір свої знання про найпухнастішого шпіца у всій енциклопедії!</p>
+
+        <div class="quiz-box" id="quiz-1">
+            <div class="quiz-question">1. Як звуть шпіца на повне ім'я?</div>
+            <div class="quiz-options">
+                <label><input type="radio" name="q1" value="a"> Фелікс</label>
+                <label><input type="radio" name="q1" value="b"> Фредерік</label>
+                <label><input type="radio" name="q1" value="c"> Федір</label>
+                <label><input type="radio" name="q1" value="d"> Фантом</label>
+            </div>
+            <button class="quiz-btn" onclick="checkQuiz('q1','a','quiz-result-1')">Відповісти</button>
+            <div class="quiz-result" id="quiz-result-1"></div>
+        </div>
+
+        <div class="quiz-box" id="quiz-2">
+            <div class="quiz-question">2. Що є найбільшою слабкістю Філа?</div>
+            <div class="quiz-options">
+                <label><input type="radio" name="q2" value="a"> Сон</label>
+                <label><input type="radio" name="q2" value="b"> Корм</label>
+                <label><input type="radio" name="q2" value="c"> Купання</label>
+                <label><input type="radio" name="q2" value="d"> Кішки</label>
+            </div>
+            <button class="quiz-btn" onclick="checkQuiz('q2','b','quiz-result-2')">Відповісти</button>
+            <div class="quiz-result" id="quiz-result-2"></div>
+        </div>
+
+        <div class="quiz-box" id="quiz-3">
+            <div class="quiz-question">3. Як Філ реагує на шурхіт пакетика?</div>
+            <div class="quiz-options">
+                <label><input type="radio" name="q3" value="a"> Ніяк</label>
+                <label><input type="radio" name="q3" value="b"> Тікає</label>
+                <label><input type="radio" name="q3" value="c"> Одразу біжить</label>
+                <label><input type="radio" name="q3" value="d"> Спить далі</label>
+            </div>
+            <button class="quiz-btn" onclick="checkQuiz('q3','c','quiz-result-3')">Відповісти</button>
+            <div class="quiz-result" id="quiz-result-3"></div>
+        </div>
+
+        <div class="quiz-box" id="quiz-4">
+            <div class="quiz-question">4. Яка порода у Філа?</div>
+            <div class="quiz-options">
+                <label><input type="radio" name="q4" value="a"> Хаскі</label>
+                <label><input type="radio" name="q4" value="b"> Пудель</label>
+                <label><input type="radio" name="q4" value="c"> Шпіц</label>
+                <label><input type="radio" name="q4" value="d"> Мопс</label>
+            </div>
+            <button class="quiz-btn" onclick="checkQuiz('q4','c','quiz-result-4')">Відповісти</button>
+            <div class="quiz-result" id="quiz-result-4"></div>
+        </div>
+
+        <div class="quiz-box" id="quiz-5">
+            <div class="quiz-question">5. Яким є офіційний статус Філа?</div>
+            <div class="quiz-options">
+                <label><input type="radio" name="q5" value="a"> Хороший хлопчик</label>
+                <label><input type="radio" name="q5" value="b"> Найкращий хлопчик</label>
+                <label><input type="radio" name="q5" value="c"> Пухнастий хлопчик</label>
+                <label><input type="radio" name="q5" value="d"> Голодний хлопчик</label>
+            </div>
+            <button class="quiz-btn" onclick="checkQuiz('q5','b','quiz-result-5')">Відповісти</button>
+            <div class="quiz-result" id="quiz-result-5"></div>
+        </div>
+
+        <div id="quiz-total" style="margin-top:20px;font-size:1.1em;font-weight:bold;color:#0645ad;"></div>
+        <button class="quiz-btn" style="margin-top:8px;" onclick="showTotalScore()">Показати підсумок</button>
+
+        <script>
+            function checkQuiz(name, correct, resultId) {
+                const selected = document.querySelector('input[name="'+name+'"]:checked');
+                const el = document.getElementById(resultId);
+                if (!selected) { el.textContent = 'Оберіть варіант!'; el.style.color='#e65100'; return; }
+                if (selected.value === correct) {
+                    el.textContent = '✅ Правильно! Молодець!';
+                    el.style.color = '#2e7d32';
+                } else {
+                    el.textContent = '❌ Неправильно. Спробуй ще!';
+                    el.style.color = '#c62828';
+                }
+            }
+            function showTotalScore() {
+                const answers = {q1:'a',q2:'b',q3:'c',q4:'c',q5:'b'};
+                let correct = 0, total = 5;
+                for (let [name, ans] of Object.entries(answers)) {
+                    const sel = document.querySelector('input[name="'+name+'"]:checked');
+                    if (sel && sel.value === ans) correct++;
+                }
+                const el = document.getElementById('quiz-total');
+                el.textContent = 'Твій результат: ' + correct + ' / ' + total + ' правильних відповідей!';
+            }
+        </script>
+    </div>
+
+    <!-- =================== СТОРІНКА 5 =================== -->
+    <div class="page" id="page-5">
+        <h2 style="margin-top:0">Розпорядок дня Філа</h2>
+        <p>Детальний аналіз щоденної рутини найорганізованішого шпіца. Дані зібрані шляхом тривалих спостережень.</p>
+
+        <h2>Карта активності (тиждень)</h2>
+        <p style="font-size:0.9em;color:#54595d;">Кожна клітинка — одна година. Колір показує рівень активності Філа.</p>
+        <div class="activity-grid" id="activity-grid"></div>
+        <div style="display:flex;gap:16px;font-size:0.85em;color:#54595d;margin-top:6px;">
+            <span><span style="display:inline-block;width:14px;height:14px;background:#ebedf0;border-radius:3px;vertical-align:middle;"></span> Сон</span>
+            <span><span style="display:inline-block;width:14px;height:14px;background:#ffd59e;border-radius:3px;vertical-align:middle;"></span> Відпочинок</span>
+            <span><span style="display:inline-block;width:14px;height:14px;background:#ff9800;border-radius:3px;vertical-align:middle;"></span> Активність</span>
+            <span><span style="display:inline-block;width:14px;height:14px;background:#e65100;border-radius:3px;vertical-align:middle;"></span> ЇЖА!</span>
+        </div>
+
+        <h2>Погодинний розклад</h2>
+        <table class="compare-table">
+            <tr><th>Час</th><th>Активність</th><th>Настрій</th></tr>
+            <tr><td>07:00</td><td>Прокидається, потягується</td><td>😴→😊</td></tr>
+            <tr><td>07:30</td><td>🍽️ Сніданок (корм!)</td><td>🤩🤩🤩</td></tr>
+            <tr><td>08:00</td><td>Прогулянка № 1</td><td>😄</td></tr>
+            <tr><td>09:00</td><td>Охорона квартири</td><td>😤</td></tr>
+            <tr><td>11:00</td><td>Денний сон</td><td>😴</td></tr>
+            <tr><td>13:00</td><td>🍽️ Обід (ще корм!)</td><td>🤩🤩🤩</td></tr>
+            <tr><td>14:00</td><td>Гра з іграшкою</td><td>😄</td></tr>
+            <tr><td>16:00</td><td>Прогулянка № 2</td><td>😄</td></tr>
+            <tr><td>18:00</td><td>Час обіймів із господарями</td><td>🥰</td></tr>
+            <tr><td>19:00</td><td>🍽️ Вечеря (улюблена!)</td><td>🤩🤩🤩</td></tr>
+            <tr><td>21:00</td><td>Охорона від тіней</td><td>😤</td></tr>
+            <tr><td>22:00</td><td>Нічний сон на подушці</td><td>😴</td></tr>
+        </table>
+
+        <h2>Налаштування активності</h2>
+        <p style="font-size:0.9em;color:#54595d;">Пересувай повзунок, щоб дізнатися, скільки Філ може з'їсти корму залежно від рівня активності:</p>
+        <div class="slider-wrap">
+            <input type="range" min="1" max="10" value="5" id="activity-slider" oninput="updateActivitySlider(this.value)">
+            <div class="slider-label"><span>Диванний режим</span><span>Спортсмен!</span></div>
+        </div>
+        <div id="activity-result" style="text-align:center;font-size:1.1em;font-weight:bold;color:#e65100;margin-top:8px;"></div>
+
+        <script>
+            // Карта активності
+            const grid = document.getElementById('activity-grid');
+            const tips = ['Сон','Відпочинок','Активність','ЇЖА!'];
+            const classes = ['','low','mid','high'];
+            const pattern = [0,0,0,0,0,0,0,3,1,1,2,1,1,0,0,3,2,2,1,2,1,2,2,2,1,2,1,0,0,0,0,0,0,0,3,1,2,2,3,2,1,2,2,1,2,1,1,0,0,0];
+            for (let i = 0; i < 49; i++) {
+                const c = document.createElement('div');
+                c.className = 'activity-cell ' + (classes[pattern[i % pattern.length]] || '');
+                c.setAttribute('data-tip', tips[pattern[i % pattern.length]]);
+                grid.appendChild(c);
+            }
+            // Слайдер
+            function updateActivitySlider(v) {
+                const portions = Math.round(v * 1.5);
+                document.getElementById('activity-result').textContent =
+                    'При активності ' + v + '/10 → Філ може з\'їсти ' + portions + ' порції корму! 🐾';
+            }
+            updateActivitySlider(5);
+        </script>
+    </div>
+
+    <!-- =================== СТОРІНКА 6 =================== -->
+    <div class="page" id="page-6">
+        <h2 style="margin-top:0">Настрій та емоції Філа</h2>
+        <p>Наукове дослідження емоційного спектру шпіца Фелікса. Дані задокументовані протягом кількох місяців спостережень.</p>
+
+        <h2>Шкала настроїв</h2>
+
+        <div class="mood-bar-wrap">
+            <div class="mood-label">Щастя (загалом)</div>
+            <div class="mood-bar"><div class="mood-fill" style="width:96%;background:linear-gradient(90deg,#ff9800,#ffeb3b);"></div></div>
+        </div>
+        <div class="mood-bar-wrap">
+            <div class="mood-label">Щастя під час їжі</div>
+            <div class="mood-bar"><div class="mood-fill" style="width:100%;background:linear-gradient(90deg,#e65100,#ff9800);"></div></div>
+        </div>
+        <div class="mood-bar-wrap">
+            <div class="mood-label">Щастя під час купання</div>
+            <div class="mood-bar"><div class="mood-fill" style="width:8%;background:#2196f3;"></div></div>
+        </div>
+        <div class="mood-bar-wrap">
+            <div class="mood-label">Збудженість під час прогулянки</div>
+            <div class="mood-bar"><div class="mood-fill" style="width:92%;background:linear-gradient(90deg,#4caf50,#8bc34a);"></div></div>
+        </div>
+        <div class="mood-bar-wrap">
+            <div class="mood-label">Терпіння (загалом)</div>
+            <div class="mood-bar"><div class="mood-fill" style="width:34%;background:#9c27b0;"></div></div>
+        </div>
+        <div class="mood-bar-wrap">
+            <div class="mood-label">Терпіння перед мискою з кормом</div>
+            <div class="mood-bar"><div class="mood-fill" style="width:2%;background:#f44336;"></div></div>
+        </div>
+
+        <h2>Генератор настрою Філа</h2>
+        <p>Натисни кнопку, щоб дізнатися, який зараз настрій у Філа:</p>
+        <button class="quiz-btn" onclick="generateMood()" style="font-size:16px;padding:10px 24px;">🐾 Який настрій у Філа?</button>
+        <div id="mood-result" style="margin-top:16px;font-size:1.2em;min-height:30px;"></div>
+
+        <h2>Словник гавкоту Філа</h2>
+        <p>Дослідники розшифрували основні типи гавкоту Філа:</p>
+        <div class="fact-card" onclick="toggleCard(this)">
+            <div class="fact-card-front">🔊 Короткий гав <span class="fact-card-toggle">▼</span></div>
+            <div class="fact-card-back">"Хей! Подивись на мене! Я тут! Дай корму!"</div>
+        </div>
+        <div class="fact-card" onclick="toggleCard(this)">
+            <div class="fact-card-front">🔊 Тривалий виваж <span class="fact-card-toggle">▼</span></div>
+            <div class="fact-card-back">"Я бачу ЩОСЬ ПІДОЗРІЛЕ! Швидше сюди! (Зазвичай це власне відображення або листок на вулиці)"</div>
+        </div>
+        <div class="fact-card" onclick="toggleCard(this)">
+            <div class="fact-card-front">🔊 Тихе скиглення <span class="fact-card-toggle">▼</span></div>
+            <div class="fact-card-back">"Я хочу обіймів. Прямо зараз. Негайно. Будь ласка. Я вже питав?"</div>
+        </div>
+        <div class="fact-card" onclick="toggleCard(this)">
+            <div class="fact-card-front">🔊 Серія коротких гавків <span class="fact-card-toggle">▼</span></div>
+            <div class="fact-card-back">"КОРМ. КОРМ. КОРМ. ТИ ЗАБУВ? КОРМ. ДИВИСЬ НА МИСКУ. КОРМ."</div>
+        </div>
+
+        <script>
+            const moods = [
+                '😄 Радісний — щойно почув шурхіт пакетика',
+                '🤩 Захоплений — миска з кормом наближається',
+                '😴 Сонний — після третьої порції корму',
+                '😤 Серйозний — охороняє квартиру від підозрілої тіні',
+                '🥰 Закоханий — господар повернувся додому',
+                '😮 Здивований — у дзеркалі знову той незнайомець',
+                '😌 Задоволений — лежить на найкращій подушці',
+                '😡 Обурений — корм запізнюється на 30 секунд',
+            ];
+            function generateMood() {
+                const m = moods[Math.floor(Math.random() * moods.length)];
+                document.getElementById('mood-result').textContent = 'Зараз Філ: ' + m;
+            }
+            function toggleCard(el) {
+                el.classList.toggle('open');
+                el.querySelector('.fact-card-toggle').textContent = el.classList.contains('open') ? '▲' : '▼';
+            }
+        </script>
+    </div>
+
+    <!-- =================== СТОРІНКА 7 =================== -->
+    <div class="page" id="page-7">
+        <h2 style="margin-top:0">Гра: Пазл з Філом</h2>
+        <p>Збери пазл! Клікай на плитки, щоб пересунути їх на порожнє місце. Ціль — скласти правильний порядок емодзі.</p>
+
+        <div id="puzzle-area">
+            <div style="font-size:0.9em;color:#54595d;">Збери послідовність: 🐾 🦴 🐶 🌟 🏠 🎾 🍖 🎀</div>
+            <div class="puzzle-grid" id="puzzle-grid"></div>
+            <div id="puzzle-msg"></div>
+            <button class="quiz-btn" onclick="initPuzzle()" style="margin-top:12px;">🔄 Перемішати знову</button>
+        </div>
+
+        <h2>Де ховається Філ?</h2>
+        <p>Один з кружечків ховає Філа! Клікай, щоб знайти його:</p>
+        <div id="find-phil-area" style="display:flex;gap:12px;flex-wrap:wrap;margin:16px 0;"></div>
+        <div id="find-phil-msg" style="font-weight:bold;min-height:24px;color:#0645ad;"></div>
+        <button class="quiz-btn" onclick="initFindPhil()" style="margin-top:10px;">🔄 Нова гра</button>
+
+        <h2>Порахуй лапки!</h2>
+        <p>Скільки лапок ти бачиш? Клікай на кожну 🐾, яку знаходиш:</p>
+        <div id="paw-area" style="display:flex;gap:8px;flex-wrap:wrap;margin:16px 0;line-height:1;"></div>
+        <div id="paw-msg" style="font-weight:bold;color:#e65100;min-height:22px;"></div>
+        <button class="quiz-btn" onclick="initPaws()" style="margin-top:10px;">🔄 Ще лапки!</button>
+
+        <script>
+            // Пазл
+            const correct = ['🐾','🦴','🐶','🌟','🏠','🎾','🍖','🎀',''];
+            let tiles = [];
+            function initPuzzle() {
+                tiles = [...correct];
+                for (let i = tiles.length - 2; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [tiles[i], tiles[j]] = [tiles[j], tiles[i]];
+                }
+                renderPuzzle();
+                document.getElementById('puzzle-msg').textContent = '';
+            }
+            function renderPuzzle() {
+                const grid = document.getElementById('puzzle-grid');
+                grid.innerHTML = '';
+                tiles.forEach((t, i) => {
+                    const d = document.createElement('div');
+                    d.className = 'puzzle-tile' + (t === '' ? ' empty' : '');
+                    d.textContent = t;
+                    d.onclick = () => moveTile(i);
+                    grid.appendChild(d);
+                });
+            }
+            function moveTile(i) {
+                const empty = tiles.indexOf('');
+                const validMoves = [i-1, i+1, i-3, i+3];
+                if (!validMoves.includes(empty)) return;
+                if ((i % 3 === 0 && empty === i-1) || (i % 3 === 2 && empty === i+1)) return;
+                [tiles[i], tiles[empty]] = [tiles[empty], tiles[i]];
+                renderPuzzle();
+                if (JSON.stringify(tiles) === JSON.stringify(correct)) {
+                    document.getElementById('puzzle-msg').textContent = '🎉 Вітаємо! Філ задоволений!';
+                }
+            }
+            initPuzzle();
+
+            // Знайди Філа
+            function initFindPhil() {
+                const area = document.getElementById('find-phil-area');
+                const msg = document.getElementById('find-phil-msg');
+                area.innerHTML = ''; msg.textContent = '';
+                const total = 9, philIdx = Math.floor(Math.random() * total);
+                for (let i = 0; i < total; i++) {
+                    const b = document.createElement('div');
+                    b.style.cssText = 'width:60px;height:60px;border-radius:50%;background:#eaecf0;border:2px solid #a2a9b1;display:flex;align-items:center;justify-content:center;font-size:24px;cursor:pointer;transition:background .2s;';
+                    b.title = 'Клікни!';
+                    b.onclick = function() {
+                        if (i === philIdx) { this.textContent='🐶'; this.style.background='#fff9c4'; msg.textContent='🎉 Знайшов Філа! Він ховався тут!'; }
+                        else { this.textContent='❌'; this.style.background='#ffebee'; }
+                    };
+                    area.appendChild(b);
+                }
+            }
+            initFindPhil();
+
+            // Лапки
+            function initPaws() {
+                const area = document.getElementById('paw-area');
+                const msg = document.getElementById('paw-msg');
+                area.innerHTML = ''; msg.textContent = '';
+                const total = Math.floor(Math.random() * 10) + 5;
+                const hidden = Math.floor(Math.random() * 4);
+                let clicked = 0, found = 0;
+                for (let i = 0; i < total + hidden; i++) {
+                    const span = document.createElement('span');
+                    const isReal = i < total;
+                    span.style.cssText = 'font-size:30px;cursor:pointer;display:inline-block;padding:4px;border-radius:4px;';
+                    span.textContent = isReal ? '🐾' : '⬜';
+                    span.onclick = function() {
+                        if (this.dataset.clicked) return;
+                        this.dataset.clicked = '1';
+                        if (isReal) { found++; this.style.background='#fff9c4'; }
+                        else { this.style.background='#ffebee'; }
+                        clicked++;
+                        if (clicked === total + hidden) {
+                            msg.textContent = 'Знайшов ' + found + ' лапок з ' + total + '! ' + (found === total ? '🎉 Чудово!' : 'Спробуй ще!');
+                        }
+                    };
+                    area.appendChild(span);
+                }
+            }
+            initPaws();
+        </script>
+    </div>
+
+    <!-- =================== СТОРІНКА 8 =================== -->
+    <div class="page" id="page-8">
+        <h2 style="margin-top:0">Галерея фотографій</h2>
+        <p>Фотографії Філа у різних життєвих ситуаціях. Усі фото зроблені з любов'ю та великою кількістю корму як нагороди.</p>
+
+        <div class="gallery">
+            <div class="gallery-item" onclick="openModal('Філ.png','Офіційний портрет')">
+                <img src="Філ.png" alt="Офіційний портрет Філа">
+                <div class="gallery-caption">Офіційний портрет</div>
+            </div>
+            <div class="gallery-item" onclick="openModal('Філ.png','Філ на прогулянці')">
+                <img src="Філ.png" alt="На прогулянці" style="filter:brightness(1.1) saturate(1.2)">
+                <div class="gallery-caption">На прогулянці</div>
+            </div>
+            <div class="gallery-item" onclick="openModal('Філ.png','Філ відпочиває')">
+                <img src="Філ.png" alt="Відпочинок" style="filter:sepia(0.4)">
+                <div class="gallery-caption">Момент відпочинку</div>
+            </div>
+            <div class="gallery-item" onclick="openModal('Філ.png','Філ у пухнастому режимі')">
+                <img src="Філ.png" alt="Пухнастий режим" style="filter:contrast(1.1) brightness(0.95)">
+                <div class="gallery-caption">Пухнастий режим</div>
+            </div>
+            <div class="gallery-item" onclick="openModal('Філ.png','Філ після купання')">
+                <img src="Філ.png" alt="Після купання" style="filter:grayscale(0.3)">
+                <div class="gallery-caption">Після купання</div>
+            </div>
+        </div>
+
+        <div class="modal-overlay" id="gallery-modal">
+            <div class="modal-box" style="max-width:560px;text-align:center;">
+                <span class="modal-close" onclick="closeModal()">✕</span>
+                <img id="modal-img" src="" alt="" style="width:100%;border-radius:4px;border:1px solid #c8ccd1;">
+                <p id="modal-caption" style="color:#54595d;font-size:0.9em;margin-top:10px;"></p>
+            </div>
+        </div>
+
+        <h2>Опис зовнішності у деталях</h2>
+        <table class="compare-table">
+            <tr><th>Частина тіла</th><th>Опис</th><th>Унікальність</th></tr>
+            <tr><td>Шерсть</td><td>Густа, кремова, подвійний шар</td><td>Максимальна пухнастість ⭐⭐⭐⭐⭐</td></tr>
+            <tr><td>Вуха</td><td>Маленькі, стоячі, трикутні</td><td>Радар для звуків пакетиків 🔊</td></tr>
+            <tr><td>Очі</td><td>Темні, круглі, виразні</td><td>100% ефективність щенячого погляду 👀</td></tr>
+            <tr><td>Хвіст</td><td>Пухнастий, загнутий на спину</td><td>Барометр щастя 📊</td></tr>
+            <tr><td>Лапи</td><td>Маленькі, з подушечками</td><td>Безшумне переміщення на кухню 🐾</td></tr>
+            <tr><td>Мордочка</td><td>Гостренька, "усміхнена"</td><td>Підкорює серця з першого погляду 💕</td></tr>
+        </table>
+
+        <h2>Кольорова палітра Філа</h2>
+        <p>Офіційна кольорова палітра шерсті Фелікса:</p>
+        <div style="display:flex;gap:12px;margin:16px 0;flex-wrap:wrap;">
+            <div style="text-align:center;">
+                <div style="width:60px;height:60px;border-radius:50%;background:#f9f5e9;border:2px solid #a2a9b1;margin:0 auto 6px;"></div>
+                <div style="font-size:0.8em;color:#54595d;">Основний<br>#f9f5e9</div>
+            </div>
+            <div style="text-align:center;">
+                <div style="width:60px;height:60px;border-radius:50%;background:#f0e6cc;border:2px solid #a2a9b1;margin:0 auto 6px;"></div>
+                <div style="font-size:0.8em;color:#54595d;">Середній<br>#f0e6cc</div>
+            </div>
+            <div style="text-align:center;">
+                <div style="width:60px;height:60px;border-radius:50%;background:#d4b896;border:2px solid #a2a9b1;margin:0 auto 6px;"></div>
+                <div style="font-size:0.8em;color:#54595d;">Темний<br>#d4b896</div>
+            </div>
+            <div style="text-align:center;">
+                <div style="width:60px;height:60px;border-radius:50%;background:#202124;border:2px solid #a2a9b1;margin:0 auto 6px;"></div>
+                <div style="font-size:0.8em;color:#54595d;">Ніс/очі<br>#202124</div>
+            </div>
+        </div>
+
+        <script>
+            function openModal(src, caption) {
+                document.getElementById('modal-img').src = src;
+                document.getElementById('modal-caption').textContent = caption;
+                document.getElementById('gallery-modal').classList.add('open');
+            }
+            function closeModal() {
+                document.getElementById('gallery-modal').classList.remove('open');
+            }
+        </script>
+    </div>
+
+    <!-- =================== СТОРІНКА 9 =================== -->
+    <div class="page" id="page-9">
+        <h2 style="margin-top:0">Цікаві факти (розширено)</h2>
+        <p>Тут зібрані найцікавіші та найдивовижніші факти про Філа. Натисни на кожен, щоб дізнатися більше!</p>
+
+        <div class="fact-card" onclick="toggleCard(this)">
+            <div class="fact-card-front">🐾 Факт № 1: Теорія пухнастості <span class="fact-card-toggle">▼</span></div>
+            <div class="fact-card-back">Шерсть Філа складається з двох шарів: м'якого підшерстка та жорсткого остьового волосся. Разом вони створюють ефект "хмаринки", завдяки якому Філ виглядає вдвічі більшим за свій реальний розмір. Вчені досі вивчають цей феномен.</div>
+        </div>
+        <div class="fact-card" onclick="toggleCard(this)">
+            <div class="fact-card-front">🦴 Факт № 2: Пам'ять на їжу <span class="fact-card-toggle">▼</span></div>
+            <div class="fact-card-back">Філ пам'ятає точний час кожного годування з точністю до хвилини. Він починає виявляти нетерпіння рівно за 5 хвилин до годування, хоча ніхто не повідомляв йому про розклад. Вчені називають це "харчовим інтелектом".</div>
+        </div>
+        <div class="fact-card" onclick="toggleCard(this)">
+            <div class="fact-card-front">👁️ Факт № 3: Щенячий погляд <span class="fact-card-toggle">▼</span></div>
+            <div class="fact-card-back">Дослідження показують, що собаки навчилися підіймати брови, щоб виглядати більш виразними перед людьми — в ході тисяч років одомашнення. Філ явно вивів це вміння на абсолютно новий рівень. Ефективність його погляду — 100%.</div>
+        </div>
+        <div class="fact-card" onclick="toggleCard(this)">
+            <div class="fact-card-front">🎾 Факт № 4: Улюблена іграшка <span class="fact-card-toggle">▼</span></div>
+            <div class="fact-card-back">Попри численні дорогі іграшки, Філ найбільше любить звичайний пакетик. Дослідники вважають, що звук шурхоту активує у нього рефлекс очікування нагороди. Пакетик = корм. Логіка бездоганна.</div>
+        </div>
+        <div class="fact-card" onclick="toggleCard(this)">
+            <div class="fact-card-front">🌙 Факт № 5: Нічний охоронець <span class="fact-card-toggle">▼</span></div>
+            <div class="fact-card-back">Кожної ночі Філ обходить квартиру по периметру рівно о 3:00. Мета обходу — невідома. Результат обходу — завжди позитивний: квартира в безпеці від тіней, привидів та інших шпіців.</div>
+        </div>
+        <div class="fact-card" onclick="toggleCard(this)">
+            <div class="fact-card-front">🛁 Факт № 6: Ставлення до купання <span class="fact-card-toggle">▼</span></div>
+            <div class="fact-card-back">Філ вважає купання особистою образою. Проте одразу після купання він демонструє "зумінг" — шалений біг по квартирі. Вчені кажуть, що це спосіб висохнути. Філ вважає, що це спосіб помститися.</div>
+        </div>
+        <div class="fact-card" onclick="toggleCard(this)">
+            <div class="fact-card-front">🐕 Факт № 7: Самооцінка <span class="fact-card-toggle">▼</span></div>
+            <div class="fact-card-back">Незважаючи на розміри дрібної собачки, Філ твердо вірить, що він — великий охоронний пес. Він гавкає на сусідських собак у 10 разів більших за себе без жодного страху. Впевненість — понад 9000.</div>
+        </div>
+        <div class="fact-card" onclick="toggleCard(this)">
+            <div class="fact-card-front">💤 Факт № 8: Сон <span class="fact-card-toggle">▼</span></div>
+            <div class="fact-card-back">Собаки сплять від 12 до 14 годин на добу. Філ спить рівно 14 годин на добу — переважно на найкращій подушці господаря. Він вважає, що це справедливо.</div>
+        </div>
+
+        <div class="wiki-quote">
+            "Немає нічого більш радісного, ніж шпіц, що біжить до тебе після довгої розлуки (навіть якщо ти виходив на 5 хвилин)."
+            <br><span style="font-size:0.85em;">— Народна мудрість власників шпіців</span>
+        </div>
+    </div>
+
+    <!-- =================== СТОРІНКА 10 =================== -->
+    <div class="page" id="page-10">
+        <h2 style="margin-top:0">Про цю енциклопедію</h2>
+        <p>Вікіпедія Філа — це незалежний енциклопедичний проєкт, присвячений вивченню та документуванню феномена шпіца Фелікса. Ресурс створений з любов'ю та великою кількістю корму.</p>
+
+        <h2>Редакційна колегія</h2>
+        <table class="compare-table">
+            <tr><th>Роль</th><th>Хто</th><th>Внесок</th></tr>
+            <tr><td>Головний редактор</td><td>Філ (Фелікс)</td><td>Схвалив усі матеріали одним гавком</td></tr>
+            <tr><td>Фотограф</td><td>Господарі</td><td>Безліч фото під час годування</td></tr>
+            <tr><td>Дослідник</td><td>Сусіди</td><td>Задокументували гавкіт</td></tr>
+            <tr><td>Коректор</td><td>Кіт (якщо є)</td><td>Відмовився від участі</td></tr>
+        </table>
+
+        <h2>Джерела та посилання</h2>
+        <details class="wiki-details">
+            <summary>Первинні джерела</summary>
+            <div class="details-body">
+                <ul>
+                    <li>Щоденні спостереження за Філом (усна традиція)</li>
+                    <li>Звукові записи гавкоту (архів господарів)</li>
+                    <li>Фотодокументація пухнастості (особистий архів)</li>
+                    <li>Рекорди зі швидкості поїдання корму (власноруч виміряно)</li>
+                </ul>
+            </div>
+        </details>
+        <details class="wiki-details">
+            <summary>Наукова база</summary>
+            <div class="details-body">
+                <p>Деякі факти підкріплені загальнодоступними науковими дослідженнями про поведінку собак, хоча Філ явно виходить за межі будь-яких середньостатистичних показників.</p>
+            </div>
+        </details>
+
+        <h2>Залиш відгук про Філа</h2>
+        <p>Як ти оцінюєш цю енциклопедію?</p>
+        <div id="feedback-stars" style="font-size:36px;cursor:pointer;letter-spacing:4px;">
+            <span onclick="rateStar(1)">☆</span>
+            <span onclick="rateStar(2)">☆</span>
+            <span onclick="rateStar(3)">☆</span>
+            <span onclick="rateStar(4)">☆</span>
+            <span onclick="rateStar(5)">☆</span>
+        </div>
+        <div id="feedback-msg" style="margin-top:10px;font-weight:bold;color:#e65100;min-height:24px;"></div>
+
+        <h2>Генератор компліментів Філу</h2>
+        <p>Натисни, щоб зробити Філу комплімент:</p>
+        <button class="quiz-btn" onclick="giveCompliment()" style="font-size:16px;padding:10px 24px;">💬 Зробити комплімент</button>
+        <div id="compliment-box" style="margin-top:14px;padding:12px 16px;border:1px solid #c8ccd1;border-radius:4px;background:#f8f9fa;min-height:40px;font-style:italic;color:#54595d;display:none;"></div>
+
+        <div class="wiki-note" style="margin-top:32px;">
+            <strong>Відмова від відповідальності:</strong> Ця енциклопедія не пов'язана з Вікімедіа або Вікіпедією. Усі факти перевірені Філом особисто (він кивнув). Редакція не несе відповідальності за надмірне бажання погладити шпіця після прочитання.
+        </div>
+
+        <script>
+            const compliments = [
+                'Філ, ти найпухнастіша хмаринка у всьому всесвіті! ☁️',
+                'Твій хвіст — найкрасивіший хвіст у всій історії хвостів! 🌟',
+                'Філ, твій гавкіт — справжня музика для вух! 🎵',
+                'Ти такий милий, що навіть кішки трохи заздрять! 🐱',
+                'Філ, ти робиш кожен день яскравішим просто своїм існуванням! ✨',
+                'Твої щенячі очі — сьоме чудо світу! 👁️',
+                'Філ, ти жива іграшка, яку неможливо відкласти! 🧸',
+                'Ти найкращий охоронець на планеті! Навіть якщо охороняєш від тіней! 🛡️',
+            ];
+            function giveCompliment() {
+                const box = document.getElementById('compliment-box');
+                box.style.display = 'block';
+                box.textContent = compliments[Math.floor(Math.random() * compliments.length)];
+            }
+            function rateStar(n) {
+                const stars = document.querySelectorAll('#feedback-stars span');
+                const msgs = ['','Зрозуміло... Але Філ вважає, що ти помиляєшся 😤','Є куди зростати! (Це не Філ, це ти) 🤔','Непогано! Але Філ заслуговує більшого! 🐾','Чудово! Філ задоволений! 🎉','ІДЕАЛЬНО! Філ стрибає від радості! 🤩'];
+                stars.forEach((s, i) => s.textContent = i < n ? '★' : '☆');
+                stars.forEach((s, i) => s.style.color = i < n ? '#ff9800' : '#a2a9b1');
+                document.getElementById('feedback-msg').textContent = msgs[n];
+            }
+        </script>
+    </div>
+
+    <!-- =================== НАВІГАЦІЯ =================== -->
+    <div class="wiki-pagination">
+        <span id="nav-prev">
+            <a href="#" id="btn-prev" onclick="changePage(-1);return false;">←</a>
+        </span>
+        <span class="wiki-page-indicator" id="page-indicator">Сторінка 1 з 10</span>
+        <span id="nav-next">
+            <a href="#" id="btn-next" onclick="changePage(1);return false;">→</a>
+        </span>
+    </div>
+</div>
+
+<script>
+    let currentPage = 1;
+    const totalPages = 10;
+
+    function changePage(dir) {
+        const next = currentPage + dir;
+        if (next < 1 || next > totalPages) return;
+        document.getElementById('page-' + currentPage).classList.remove('active');
+        currentPage = next;
+        document.getElementById('page-' + currentPage).classList.add('active');
+        document.getElementById('page-indicator').textContent = 'Сторінка ' + currentPage + ' з ' + totalPages;
+        document.getElementById('btn-prev').style.visibility = currentPage === 1 ? 'hidden' : 'visible';
+        document.getElementById('btn-next').style.visibility = currentPage === totalPages ? 'hidden' : 'visible';
+        window.scrollTo({top: 0, behavior: 'smooth'});
+    }
+
+    // Ініціалізація стану кнопок
+    document.getElementById('btn-prev').style.visibility = 'hidden';
+</script>
 
 </body>
 </html>
